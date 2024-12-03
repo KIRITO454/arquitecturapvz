@@ -6,7 +6,7 @@ import Videojuego from "../app/models/Videojuego.js";
 import VideojuegosGeneros from "../app/models/VideojuegosGeneros.js";
 import VideojuegosPlataformas from "../app/models/VideojuegosPlataformas.js";
 var AppDataSource = new DataSource({
-  type: "mysql",
+  type: "mysql2",
   host: "kiritoasu.mysql.database.azure.com",
   port: 3306,
   username: "jandry45",

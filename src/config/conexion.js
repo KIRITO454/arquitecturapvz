@@ -9,7 +9,7 @@ import VideojuegosPlataformas from "../app/models/VideojuegosPlataformas.js";
 
 
 const AppDataSource = new DataSource({
-  type: "mysql",
+  type: "mysql2",
   host: "kiritoasu.mysql.database.azure.com",
   port: 3306, 
   username: "jandry45", 
