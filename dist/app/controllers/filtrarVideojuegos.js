@@ -14,7 +14,7 @@ function filtrarVideojuegos() {
     var matchesPrice = filterByPrice(game.precio, selectedPrice);
     return matchesSearch && matchesPlatform && matchesGenre && matchesPrice;
   });
-  displayGames(filteredGames);
+  mostrarListaVideojuegos(filteredGames);
 }
 function filterByPrice(price, priceRange) {
   var priceNum = parseFloat(price);
@@ -25,7 +25,7 @@ function filterByPrice(price, priceRange) {
   if (priceRange === "60-") return priceNum >= 60;
   return true;
 }
-document.getElementById('search-input').addEventListener('input', filterGames);
-document.getElementById('platform-filter').addEventListener('change', filterGames);
-document.getElementById('genre-filter').addEventListener('change', filterGames);
-document.getElementById('price-filter').addEventListener('change', filterGames);
+document.getElementById('search-input').addEventListener('input', filtrarVideojuegos);
+document.getElementById('platform-filter').addEventListener('change', filtrarVideojuegos);
+document.getElementById('genre-filter').addEventListener('change', filtrarVideojuegos);
+document.getElementById('price-filter').addEventListener('change', filtrarVideojuegos);

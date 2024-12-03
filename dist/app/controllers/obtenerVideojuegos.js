@@ -37,4 +37,4 @@ function _obtenerVideojuegos() {
   }));
   return _obtenerVideojuegos.apply(this, arguments);
 }
-window.onload = fetchGames;
+window.onload = obtenerVideojuegos;

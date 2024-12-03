@@ -6,12 +6,12 @@ import Videojuego from "../app/models/Videojuego.js";
 import VideojuegosGeneros from "../app/models/VideojuegosGeneros.js";
 import VideojuegosPlataformas from "../app/models/VideojuegosPlataformas.js";
 var AppDataSource = new DataSource({
-  type: "mysql2",
+  type: "mysql",
   host: "kiritoasu.mysql.database.azure.com",
-  port: 3306,
-  username: "jandry45",
+  username: "kirito45",
   password: "asuna45-",
   database: "videojuegos_db",
+  ssl: true,
   synchronize: false,
   logging: false,
   entities: [Genero, Plataforma, Reseña, Videojuego, VideojuegosGeneros, VideojuegosPlataformas]
