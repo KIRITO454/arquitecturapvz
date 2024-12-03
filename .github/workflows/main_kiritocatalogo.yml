@@ -28,7 +28,7 @@ jobs:
 
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip * -x "*.github*" "*.git*" "node_modules/*"
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -41,6 +41,10 @@ jobs:
     needs: build
     environment:
       name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
@@ -53,14 +57,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5665F3F5F425400A95D441BFCE16FC80 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E4C92F1E25D54149A3F085D056CEFA43 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D5F769692E854A85BF7ECF06FAFC29A5 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'kiritocatalogo'
-          package: release.zip
-          slot-name: ''
+          slot-name: 'Production'
+          package: .
+          
