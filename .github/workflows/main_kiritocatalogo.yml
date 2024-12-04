@@ -61,11 +61,15 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E4C92F1E25D54149A3F085D056CEFA43 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D5F769692E854A85BF7ECF06FAFC29A5 }}
 
+      - name: Esperar unos segundos antes de desplegar
+        run: sleep 30  
+        
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
+          
           app-name: 'kiritocatalogo'
           slot-name: 'Production'
           package: .
-          
+  
